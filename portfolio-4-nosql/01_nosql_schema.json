@@ -1,0 +1,20 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["event_id", "title", "venue", "starts_at", "status"],
+    "properties": {
+      "event_id": { "bsonType": "int", "description": "Must be an integer and is required" },
+      "title": { "bsonType": "string", "description": "Must be a string" },
+      "starts_at": { "bsonType": "date", "description": "Must be a valid date" },
+      "status": { "enum": ["published", "draft", "cancelled"], "description": "Must match allowed statuses" },
+      "venue": {
+        "bsonType": "object",
+        "required": ["name", "city"],
+        "properties": {
+          "name": { "bsonType": "string" },
+          "city": { "bsonType": "string" }
+        }
+      }
+    }
+  }
+}
