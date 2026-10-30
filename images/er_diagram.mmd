@@ -1,0 +1,38 @@
+erDiagram
+    VENUE ||--o{ EVENT : hosts
+    EVENT ||--o{ TICKET_TYPE : offers
+    TICKET_TYPE ||--o{ BOOKING : reserved_in
+
+    VENUE {
+        int venue_id PK
+        string name
+        string city
+        int capacity
+    }
+
+    EVENT {
+        int event_id PK
+        int venue_id FK
+        string title
+        datetime starts_at
+        datetime ends_at
+        string status
+    }
+
+    TICKET_TYPE {
+        int ticket_type_id PK
+        int event_id FK
+        string label
+        decimal price
+        int capacity
+        int sold_count
+    }
+
+    BOOKING {
+        int booking_id PK
+        int ticket_type_id FK
+        string attendee_email
+        datetime booked_at
+        string status
+        string confirmation_code
+    }
